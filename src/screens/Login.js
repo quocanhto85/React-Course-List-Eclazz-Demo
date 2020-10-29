@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState, useCallback } from "react";
 import {
   Container,
   Card,
@@ -11,15 +11,14 @@ import {
 } from "reactstrap";
 import { Provider, useAuth0 } from "../authen/auth0Service";
 import { useHistory } from "react-router-dom";
-import { Alert } from 'reactstrap';
-import { AlertCircle } from 'react-feather';
+import { Alert } from "reactstrap";
+import { AlertCircle } from "react-feather";
 
 const LoginImpl = () => {
   const history = useHistory();
   const [username, setUserName] = useState("");
   const [password, setPassWord] = useState("");
   const [error, setError] = useState("");
-  const [res, setRes] = useState();
   const { login } = useAuth0();
   const [loading, setLoading] = useState(false);
 
@@ -50,15 +49,6 @@ const LoginImpl = () => {
       </span>
     </Alert>
   ), []);
-
-//   const AlertDanger = ({title}) => (
-//     <Alert color="danger" isOpen={true}>
-//         <AlertCircle size={15} />{" "}
-//         <span>
-//             {title}
-//         </span>
-//     </Alert>
-// )
 
   return (
     <div className="app flex-row align-items-center">

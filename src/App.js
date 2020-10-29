@@ -1,5 +1,5 @@
 import React from "react"
-import Login from "./screens/Login";
+import {Login, DashBoard} from "./screens/index";
 
 import {
     BrowserRouter as Router,
@@ -11,10 +11,11 @@ const App = () => {
         <div>
             <Router>
                 <Route exact path="/" component={Login} />
-                <Route exact path="/main" component={() => {
+                <Route exact path="/main" component={DashBoard} />
+                {/* <Route exact path="/main" component={() => {
                     window.location.href = "https://eclass.ftech.ai/"; 
                     return null;
-                }} />
+                }} /> */}
             </Router>
         </div>
     )
