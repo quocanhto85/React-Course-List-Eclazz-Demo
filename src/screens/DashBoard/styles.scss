@@ -1,0 +1,16 @@
+.course{
+    a.link_web{
+        font-size: 1rem;
+    }
+    .data-list-action{
+        display: flex;
+        flex-direction: row;
+        div{
+            margin-right : 1rem;
+            svg{
+                margin:0.2rem !important;
+            }
+        }
+        
+    }
+}

@@ -1,4 +1,4 @@
-import { postFormAsync, getAsync } from "../helper/request";
+import { postFormAsync, getAsync } from "helper/request";
 const API_URL = process.env.REACT_APP_API_URL;
 export const authenService = {
     login,

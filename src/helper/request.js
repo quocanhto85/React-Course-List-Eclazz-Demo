@@ -45,3 +45,41 @@ export async function getAsync(url, param) {
         return { status, data: {}, message: (error[0]?.message || ''), code: (error[0]?.code || 0) }
     }
 }
+
+export async function patchAsync(url, data) {
+    try {
+        let formData = new FormData();
+        for (const i in data) {
+            formData.append(i, data[i]);
+        }
+        const response = await Axios.patch(url, data, {
+            headers: {
+                'Authorization': 'Bearer ' + getCookie(),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        return response;
+    } catch (ex) {
+        const { status = 400, data = {}, errors = [] } = ex.response || {};
+        const error = data?.errors || [];
+        return { status, data: ex.response.data || {}, errors, message: (error[0]?.message || '') }
+    }
+}
+
+export async function deleteAsync(url) {
+    try {
+        const response = await Axios.delete(url, {
+            headers: {
+                'Authorization': 'Bearer ' + getCookie(),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        return response;
+    } catch (ex) {
+        const { status = 400, data = {}, errors = [] } = ex.response || {};
+        const error = data?.errors || [];
+        return { status, data: ex?.response?.data || {}, errors, message: (error[0]?.message || '') }
+    }
+}

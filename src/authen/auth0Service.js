@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from "react"
 import { authenService } from "../services/authenService";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 import { Spinner } from "react-bootstrap";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../helper/constant";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../helper/constant/token";
 
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
 
-export const Provider = ({ children }) => {
+export const Auth0Provider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [user, setUser] = useState()
     const [loading, setLoading] = useState()
@@ -17,6 +17,7 @@ export const Provider = ({ children }) => {
     useEffect(() => {
         const initAuth0 = async () => {
           const user = await authenService.getAccountInfo();
+          console.log(user)
           setmounted(true)
           if (user) {
             setIsAuthenticated(true)

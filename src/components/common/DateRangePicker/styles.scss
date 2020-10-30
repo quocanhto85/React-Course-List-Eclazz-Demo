@@ -1,0 +1,22 @@
+@media (max-width :850px) {
+    .custom-datepicker{
+        width: 100% ;
+        .DateRangePicker{
+            width: 100%;
+            .DateRangePickerInput__withBorder{
+                width: 100%  ;
+                display: flex;
+                .DateInput{
+                    width: 100% !important;
+                    .DateInput_input_1{
+                        text-align: center;
+                    }
+                }
+                .DateRangePickerInput_arrow{
+                    line-height: 30px;
+                }
+            }
+        }
+        
+    }
+}

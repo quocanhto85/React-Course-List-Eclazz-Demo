@@ -9,7 +9,7 @@ import {
   InputGroupText,
   ButtonToggle,
 } from "reactstrap";
-import { Provider, useAuth0 } from "../authen/auth0Service";
+import { Auth0Provider, useAuth0 } from "authen/auth0Service";
 import { useHistory } from "react-router-dom";
 import { Alert } from "reactstrap";
 import { AlertCircle } from "react-feather";
@@ -113,6 +113,6 @@ const LoginImpl = () => {
   );
 };
 
-const Login = () => <Provider><LoginImpl /></Provider>
+const Login = () => <Auth0Provider><LoginImpl /></Auth0Provider>
 
 export default memo(Login);
