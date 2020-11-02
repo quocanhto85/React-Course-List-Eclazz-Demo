@@ -17,7 +17,6 @@ export const Auth0Provider = ({ children }) => {
     useEffect(() => {
         const initAuth0 = async () => {
           const user = await authenService.getAccountInfo();
-          console.log(user)
           setmounted(true)
           if (user) {
             setIsAuthenticated(true)

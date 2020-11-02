@@ -13,8 +13,6 @@ const Organization = ({ onChange, defaultID, show, ...rest }) => {
     const [data, setData] = useState([init])
     // const { user } = useAuth0();
 
-    console.log(useAuth0())
-
     useEffect(() => {   
         if (isAdmin)
             getData();
