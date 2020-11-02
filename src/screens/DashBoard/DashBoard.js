@@ -25,7 +25,6 @@ const DashBoardImpl = () => {
         onPageChange, onChangePageSize, handleCloseCancel, handleCancel,
         rowCancel, rowDelete,
     } = useContexts();
-
     const { showDelete, handleCloseDelete, handleDelete, organizationID } = useContexts();
 
     const columns = useColumns();
@@ -61,10 +60,10 @@ const DashBoardImpl = () => {
                     {!loading && <CardBody>
                             <div className={`data-list course`}>
                                 <TableActions title="Số khóa học" count={totalRow}>
-                                    <Button.Ripple className="mr-1 mb-1" color="primary" onClick={() => redirect('courses-create')}>
+                                    <Button className="mr-1 mb-1" color="primary" >
                                         <PlusCircle size={14} />
                                         <span className="align-middle ml-25">Thêm khóa học</span>
-                                    </Button.Ripple>
+                                    </Button>
                                 </TableActions>
 
                                 <DataTable

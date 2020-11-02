@@ -19,7 +19,7 @@ export const Provider = ({ children }) => {
 
     const [data, setData] = useState([]);
     const dataTable = useModifyData(data);
-
+    console.log("dataTable: ", dataTable)
     const [organizationID, setOrganizationID] = useState(0)
     const [subject, setSubject] = useState(0)
     const [teacher, setTeacher] = useState(0)
@@ -66,20 +66,6 @@ export const Provider = ({ children }) => {
             changePageNumber(1)
     }, [pageNumber, pageSize])
 
-    const handleDelete = useCallback(async () => {
-        setLoading(true)
-        const { status } = await deleteCourse(rowDelete.id)
-        setLoading(false)
-        handleCloseDelete()
-        if (status === 204) {
-            toastSuccess('Xóa khóa học', 'Thành công')
-            reload();
-        } else {
-            toastError('Xóa khóa học', 'Thất bại')
-        }
-
-    }, [rowDelete])
-
     const onChangeOrganization = useCallback((selected) => {
         setOrganizationID(selected.value)
         setSubject(0)
@@ -112,6 +98,20 @@ export const Provider = ({ children }) => {
         setBranch(selected.value)
         setSubject(0)
     })
+    
+    const handleDelete = useCallback(async () => {
+        setLoading(true)
+        const { status } = await deleteCourse(rowDelete.id)
+        setLoading(false)
+        handleCloseDelete()
+        if (status === 204) {
+            toastSuccess('Xóa khóa học', 'Thành công')
+            reload();
+        } else {
+            toastError('Xóa khóa học', 'Thất bại')
+        }
+
+    }, [rowDelete])
 
     const value = useMemo(() => ({
         loading, dataTable, totalRow, pageSize, pageNumber, totalPage,

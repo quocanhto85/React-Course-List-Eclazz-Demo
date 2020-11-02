@@ -60,7 +60,7 @@ export const Auth0Provider = ({ children }) => {
         removeCookie(REFRESH_TOKEN, { path: '/' })
         setAuthen && setIsAuthenticated(false)
       }
-      if (!mounted) return <Spinner animation="border" />;
+      // if (!mounted) return <Spinner animation="border" />;
       return (
         <Auth0Context.Provider
           value={{

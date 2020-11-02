@@ -33,7 +33,6 @@ export async function getCourse(request = {}, paging = false) {
 
     const url = API_URL + params;
     const { data } = await getAsync(url);
-    console.log(data)
     if (!paging)
         return data?.data?.results || [];
     else {

@@ -4,7 +4,7 @@ import ChangePageSize from "./SizePage";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 import "./styles.scss"
-// import "assets/scss/react-paginate.scss"
+import "assets/scss/react-paginate.scss"
 
 
 const Paginate = ({ totalPage, pageNumber, onPageChange, onChange, pageSize, totalRow }) => {

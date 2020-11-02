@@ -9,8 +9,8 @@ const useModifyData = (data) => {
     }, [data])
 
     const getLink = useCallback((landingpage_layout, id) => {
-        if (typeof landingpage_layout != 'object' || Object.keys(landingpage_layout).length === 0)
-            return '';
+        if (typeof landingpage_layout != "object" || Object.keys(landingpage_layout).length === 0)
+            return "";
         return `${homeURL}/courses/${id}/detail`;
     }, [])
 
@@ -46,8 +46,8 @@ const useModifyData = (data) => {
             return {
                 index, id, orgID, orgName, courseID, courseName, subjectID, subjectName, teacherName, fee,
                 session_count,
-                // start_time: formatDate(start_time),
-                // end_time: formatDate(end_time),
+                start_time: formatDate(start_time),
+                end_time: formatDate(end_time),
                 registration_count, enrollment_count, revenue, state,
                 link: getLink(landingpage_layout, id), //((Object.keys(landingpage_layout).length === 0) ? "" : `${homeURL}/courses/${id}/detail`),
                 landingpage_layout
