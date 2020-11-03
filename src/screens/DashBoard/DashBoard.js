@@ -31,7 +31,6 @@ const DashBoardImpl = () => {
 
     const { onChangeOrganization, onChangeTimes, onChangeSubject, onChangeTeacher, onChangeStatus } = useContexts();
     const { branch, onChangeBranch } = useContexts();
-    const { subject } = useContexts();
     const redirect = useRedirectPage();
 
     return (
@@ -60,7 +59,7 @@ const DashBoardImpl = () => {
                     {!loading && <CardBody>
                             <div className={`data-list course`}>
                                 <TableActions title="Số khóa học" count={totalRow}>
-                                    <Button className="mr-1 mb-1" color="primary" >
+                                    <Button className="mr-1 mb-1" color="primary" onClick={() => redirect("add-course")}>
                                         <PlusCircle size={14} />
                                         <span className="align-middle ml-25">Thêm khóa học</span>
                                     </Button>

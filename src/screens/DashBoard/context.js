@@ -19,7 +19,6 @@ export const Provider = ({ children }) => {
 
     const [data, setData] = useState([]);
     const dataTable = useModifyData(data);
-    console.log("dataTable: ", dataTable)
     const [organizationID, setOrganizationID] = useState(0)
     const [subject, setSubject] = useState(0)
     const [teacher, setTeacher] = useState(0)
