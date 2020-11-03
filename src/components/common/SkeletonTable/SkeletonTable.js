@@ -5,23 +5,22 @@ import "./styles.scss"
 
 const SkeletonTable = ({ data = [] }) => {
 
-    const renderNameColumn = data?.map(x => (
-        <th id="th-table" style={{ minWidth: x.minWidth || "100px" }}>
+    const renderNameColumn = data?.map((x , index) => (
+        <th id="th-table" key={index + 1} style={{ minWidth: x.minWidth || "100px" }}>
             <span>{x.name}</span>
         </th>
     ))
 
-    const rowTable = data?.map(x => (
-        <td>
+    const rowTable = data?.map((x , index) => (
+        <td key={index + 1}>
             <Skeleton duration={0.5} count={x.numberLine || 1} />
         </td>
-
     ))
 
     const RenderRowTable = () => {
         let rows = []
         for (let i = 1; i <= 10; i++) {
-            rows.push(<tr>{rowTable}</tr>)
+            rows.push(<tr key={i}>{rowTable}</tr>)
         }
         return rows;
     }
@@ -43,16 +42,17 @@ const SkeletonTable = ({ data = [] }) => {
     const RenderHeaderTable = () => (
         <div className="d-flex justify-content-between header-skeleton">
             <div className="ml-1 mt-1 mb-1">
-                <Skeleton duration={0.5} width={'140px'} height={"20px"} />
+                <Skeleton duration={0.5} width={"140px"} height={"20px"} />
             </div>
             <div className="mr-2 mt-1 mb-1">
-                <Skeleton duration={0.5} width={'180px'} height={"45px"} />
+                <Skeleton duration={0.5} width={"180px"} height={"45px"} />
             </div>
         </div>
     )
 
     return (
         <div>
+            <>
             <SkeletonTheme color="" highlightColor="" >
                 <RenderHeaderTable />
                 <Table borderless className="custom-table-skeleton mt-2">
@@ -67,6 +67,7 @@ const SkeletonTable = ({ data = [] }) => {
                     <RenderFooterTable />
                 </Table>
             </SkeletonTheme>
+            </>
         </div>
     )
 }

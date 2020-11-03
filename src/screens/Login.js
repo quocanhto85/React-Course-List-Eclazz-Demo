@@ -31,7 +31,7 @@ const LoginImpl = () => {
 
     const response = await login({ username, password });
 
-    const message = (response === 200 ? '' : 'Đăng nhập không thành công');
+    const message = (response === 200 ? "" : "Đăng nhập không thành công");
     const wait = (response === 200 ? true : false)
     setError(message);
     setLoading(wait)
@@ -104,7 +104,7 @@ const LoginImpl = () => {
               </div>
             </form>
           </CardBody>
-          {error && <div className='mt-3'>
+          {error && <div className="mt-3">
             <AlertDanger title={error} />
           </div>}
         </Card>

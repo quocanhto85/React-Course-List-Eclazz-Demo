@@ -104,10 +104,10 @@ export const Provider = ({ children }) => {
         setLoading(false)
         handleCloseDelete()
         if (status === 204) {
-            toastSuccess('Xóa khóa học', 'Thành công')
+            toastSuccess("Xóa khóa học", "Thành công")
             reload();
         } else {
-            toastError('Xóa khóa học', 'Thất bại')
+            toastError("Xóa khóa học", "Thất bại")
         }
 
     }, [rowDelete])

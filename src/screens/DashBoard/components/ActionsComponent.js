@@ -1,30 +1,22 @@
 import React, { memo, useEffect, useState } from "react";
 import { Edit, Eye, Slash, Trash } from "react-feather";
 import { useContexts } from "../context";
-import { useRedirectPage } from "hooks";
 import { UncontrolledTooltip } from "reactstrap";
 import classnames from "classnames";
 
 const ActionsComponent = ({ row }) => {
-
-  const redirect = useRedirectPage();
 
   const { handleShowCancel, handleShowDelete } = useContexts();
   const [items, setItems] = useState([]);
   let { state, } = row;
   state = state.toUpperCase();
 
-  const redirectPage = (id, type) => {
-    const pathname = `courses/detail/${id}/${type}`;
-    redirect(pathname)
-  }
-
   useEffect(() => {
     const { id, registration_count } = row;
     const items = [
-      { icon: Eye, title: "Xem", show: true, onClick: () => redirectPage(id, 'preview') },
-      { icon: Edit, title: "Sửa", show: true, onClick: () => redirectPage(id, 'edit') },
-      { icon: Trash, title: "Xóa", show: (state === 'CREATED' && registration_count === 0), onClick: () => handleShowDelete(row) },
+      { icon: Eye, title: "Xem", show: true },
+      { icon: Edit, title: "Sửa", show: true },
+      { icon: Trash, title: "Xóa", show: (state === "CREATED" && registration_count === 0), onClick: () => handleShowDelete(row) },
       { icon: Slash, title: "Hủy", show: true, onClick: () => handleShowCancel(row) },
     ]
 
@@ -52,7 +44,7 @@ const ActionsComponent = ({ row }) => {
     })
   }
 
-  if (state === 'CANCELED' || state === 'ENDED')
+  if (state === "CANCELED" || state === "ENDED")
     return null
   return (
     <>

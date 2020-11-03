@@ -1,8 +1,8 @@
-function momentToDate(moment, format = 'YYYY-MM-DD') {
+function momentToDate(moment, format = "YYYY-MM-DD") {
     return moment.format(format)
 }
 
-function formatDate(date, comma = '/') {
+function formatDate(date, comma = "/") {
     date = new Date(date);
     let day = date.getDate();
     if (day < 10)
@@ -10,17 +10,17 @@ function formatDate(date, comma = '/') {
     let month = date.getMonth() + 1
     if (month < 10)
         month = "0" + month;
-    if (comma === '-')
-        return date.getFullYear() + '-' + month + '-' + day;
+    if (comma === "-")
+        return date.getFullYear() + "-" + month + "-" + day;
     return day + "/" + month + "/" + date.getFullYear();
 }
 
-function formatNumber(x = '', comma = ',') {
+function formatNumber(x = "", comma = ",") {
     return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, comma);
 }
 
 function getOrgFromRouter() {
-    return window.location.pathname.split('/')[1] ?? '';
+    return window.location.pathname.split("/")[1] ?? "";
 }
 
 export {

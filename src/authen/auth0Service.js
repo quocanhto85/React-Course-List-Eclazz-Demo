@@ -50,14 +50,14 @@ export const Auth0Provider = ({ children }) => {
       }
 
       const saveCookie = (name, value, expires) => {
-        const options = { path: '/' };
+        const options = { path: "/" };
         expires && (options.expires = new Date(new Date().getTime() + expires * 1000));
         setCookie(name, value, options)
       }
 
       const logout = (setAuthen = true) => {
-        removeCookie(ACCESS_TOKEN, { path: '/' })
-        removeCookie(REFRESH_TOKEN, { path: '/' })
+        removeCookie(ACCESS_TOKEN, { path: "/" })
+        removeCookie(REFRESH_TOKEN, { path: "/" })
         setAuthen && setIsAuthenticated(false)
       }
       // if (!mounted) return <Spinner animation="border" />;

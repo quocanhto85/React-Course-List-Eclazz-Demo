@@ -11,7 +11,7 @@ const init = { value: 0, label: "Tất cả" }
 const Organization = ({ onChange, defaultID, show, ...rest }) => {
     const { isAdmin } = useOrganizationType()
     const [data, setData] = useState([init])
-    // const { user } = useAuth0();
+    const { user } = useAuth0();
 
     useEffect(() => {   
         if (isAdmin)
@@ -36,7 +36,7 @@ const Organization = ({ onChange, defaultID, show, ...rest }) => {
                 {...rest}
             />
             }
-            {/* {(!isAdmin && show) && <Input value={user?.organization?.name} disabled={true} />} */}
+            {(!isAdmin && show) && <Input value={user?.organization?.name} disabled={true} />}
         </>
     )
 }

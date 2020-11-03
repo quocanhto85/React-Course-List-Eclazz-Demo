@@ -3,10 +3,9 @@ import { getLabel, getClass } from "helper/constant/statusCourse";
 import classnames from "classnames"
 import { formatNumber } from "helper/utility";
 import ActionsComponent from "../components/ActionsComponent";
-import { useOrganizationType, useRedirectPage } from "hooks";
+import { useOrganizationType } from "hooks";
 
 const useColumns = () => {
-    const redirect = useRedirectPage();
 
     const columns = [
         {
@@ -43,7 +42,7 @@ const useColumns = () => {
             numberLine:3,
             cell: ({ courseName, teacherName, fee, id }) => (
                 <p className="d-flex flex-column">
-                    <span className="like-link" onClick={() => redirect(`/courses-detail/${id}`)}>{courseName}</span>
+                    <span className="like-link">{courseName}</span>
                     <span>GV : {teacherName}</span>
                     <span>Học phí : {formatNumber(fee)} VNĐ</span>
                 </p>

@@ -2,15 +2,13 @@ import React, { memo } from "react";
 import { Card, CardHeader, CardTitle, Row, Col, CardBody, Button } from "reactstrap";
 import { SelectOrganization, SelectSubject, SelectStatus, SelectTeacher, SelectBranchSingle, TableActions, NoDataRow, } from "components/common";
 import { DateRangePicker } from "components/common/DateRangePicker";
+import { SkeletonTable } from "components/common/SkeletonTable";
+import { Paginate } from "components/common/Pagination";
 import DataTable from "react-data-table-component";
 import { Provider, useContexts } from "./context";
 import { PlusCircle } from "react-feather";
 import { useColumns } from "./hooks";
-import { useRedirectPage } from "hooks";
-import { SkeletonTable } from "components/common/SkeletonTable";
-import { Paginate } from "components/common/Pagination";
 import "./styles.scss";
-import { ModalConfirmCourse } from "components/common/Modal";
 
 const initOptions = {
     organization: 0,
@@ -21,17 +19,15 @@ const initOptions = {
 
 const DashBoardImpl = () => {
     const {
-        loading, totalPage, pageNumber, totalRow, pageSize, dataTable, showCancel,
-        onPageChange, onChangePageSize, handleCloseCancel, handleCancel,
-        rowCancel, rowDelete,
+        loading, totalPage, pageNumber, totalRow, pageSize, dataTable,
+        onPageChange, onChangePageSize, 
     } = useContexts();
-    const { showDelete, handleCloseDelete, handleDelete, organizationID } = useContexts();
+    const { organizationID } = useContexts();
 
     const columns = useColumns();
 
     const { onChangeOrganization, onChangeTimes, onChangeSubject, onChangeTeacher, onChangeStatus } = useContexts();
     const { branch, onChangeBranch } = useContexts();
-    const redirect = useRedirectPage();
 
     return (
         <>
@@ -59,7 +55,7 @@ const DashBoardImpl = () => {
                     {!loading && <CardBody>
                             <div className={`data-list course`}>
                                 <TableActions title="Số khóa học" count={totalRow}>
-                                    <Button className="mr-1 mb-1" color="primary" onClick={() => redirect("add-course")}>
+                                    <Button className="mr-1 mb-1" color="primary">
                                         <PlusCircle size={14} />
                                         <span className="align-middle ml-25">Thêm khóa học</span>
                                     </Button>
@@ -84,22 +80,6 @@ const DashBoardImpl = () => {
                     </Card>
                 </Col>
             </Row>
-            {showCancel && <ModalConfirmCourse
-                onClose={handleCloseCancel}
-                title="Hủy khóa học"
-                body="Bạn có chắc chắn muốn hủy khóa học này?"
-                name={rowCancel.courseName}
-                code={rowCancel.courseID}
-                onSubmit={handleCancel}
-            />}
-            {showDelete && <ModalConfirmCourse
-                onClose={handleCloseDelete}
-                title="Xóa khóa học"
-                name={rowDelete.courseName}
-                code={rowDelete.courseID}
-                body="Bạn có chắc chắn muốn xóa khóa học này?"
-                onSubmit={handleDelete}
-            />}
         </>
     )
 }
